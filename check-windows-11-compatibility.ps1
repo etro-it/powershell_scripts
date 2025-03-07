@@ -484,7 +484,9 @@ Switch ($outObject.returnCode) {
         $outObject.returnResult = $CAPABLE_CAPS_STRING 
         # Write to file if Windows 11 is supported
         $outputPath = "C:\ETRO_pp\apps"
-        $message = "Windows 11 is supported. Result: $($outObject | ConvertTo-Json -Compress)"
+        $message = [pscustomobject]@{
+            IncompatibleItems = $outObject.returnReason
+        }
         if (-Not (Test-Path $outputPath)) {
             New-Item -ItemType Directory -Path $outputPath -Force | Out-Null
         }
@@ -494,7 +496,9 @@ Switch ($outObject.returnCode) {
         $outObject.returnResult = $NOT_CAPABLE_CAPS_STRING 
         # Write to file if Windows 11 is not supported
         $outputPath = "C:\ETRO_pp\apps"
-        $message = "Windows 11 is not supported due to one or more hardware readiness checks failing. Result: $($outObject | ConvertTo-Json -Compress)"
+        $message = [pscustomobject]@{
+            IncompatibleItems = $outObject.returnReason
+        }
         if (-Not (Test-Path $outputPath)) {
             New-Item -ItemType Directory -Path $outputPath -Force | Out-Null
         }
@@ -504,7 +508,9 @@ Switch ($outObject.returnCode) {
         $outObject.returnResult = $UNDETERMINED_CAPS_STRING 
         # Optionally write the undetermined state
         $outputPath = "C:\ETRO_pp\apps"
-        $message = "Hardware readiness is undetermined. Result: $($outObject | ConvertTo-Json -Compress)"
+        $message = [pscustomobject]@{
+            IncompatibleItems = $outObject.returnReason
+        }
         if (-Not (Test-Path $outputPath)) {
             New-Item -ItemType Directory -Path $outputPath -Force | Out-Null
         }
@@ -514,7 +520,9 @@ Switch ($outObject.returnCode) {
         $outObject.returnResult = $FAILED_TO_RUN_STRING 
         # Optionally write the failure state
         $outputPath = "C:\ETRO_pp\apps"
-        $message = "The script failed to run. Result: $($outObject | ConvertTo-Json -Compress)"
+        $message = [pscustomobject]@{
+            IncompatibleItems = $outObject.returnReason
+        }
         if (-Not (Test-Path $outputPath)) {
             New-Item -ItemType Directory -Path $outputPath -Force | Out-Null
         }
