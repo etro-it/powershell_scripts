@@ -493,7 +493,7 @@ Switch ($outObject.returnCode) {
     1 { 
         $outObject.returnResult = $NOT_CAPABLE_CAPS_STRING 
         # Write to file if Windows 11 is not supported
-        $outputPath = "C:\data\info"
+        $outputPath = "C:\ETRO_pp\apps"
         $message = "Windows 11 is not supported due to one or more hardware readiness checks failing. Result: $($outObject | ConvertTo-Json -Compress)"
         if (-Not (Test-Path $outputPath)) {
             New-Item -ItemType Directory -Path $outputPath -Force | Out-Null
@@ -503,7 +503,7 @@ Switch ($outObject.returnCode) {
     -1 { 
         $outObject.returnResult = $UNDETERMINED_CAPS_STRING 
         # Optionally write the undetermined state
-        $outputPath = "C:\data\info"
+        $outputPath = "C:\ETRO_pp\apps"
         $message = "Hardware readiness is undetermined. Result: $($outObject | ConvertTo-Json -Compress)"
         if (-Not (Test-Path $outputPath)) {
             New-Item -ItemType Directory -Path $outputPath -Force | Out-Null
@@ -513,7 +513,7 @@ Switch ($outObject.returnCode) {
     -2 { 
         $outObject.returnResult = $FAILED_TO_RUN_STRING 
         # Optionally write the failure state
-        $outputPath = "C:\data\info"
+        $outputPath = "C:\ETRO_pp\apps"
         $message = "The script failed to run. Result: $($outObject | ConvertTo-Json -Compress)"
         if (-Not (Test-Path $outputPath)) {
             New-Item -ItemType Directory -Path $outputPath -Force | Out-Null
