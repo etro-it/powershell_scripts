@@ -1,6 +1,6 @@
 # This scripts an automated upgrade of Windows 10 to Windows 11
 # Define the file paths and URLs
-$logFile = "C:\temp\Windows11UpgradeLog.txt"
+$logFile = "C:\ETRO_pp\apps\Windows11UpgradeLog.txt"
 # URL to download Windows 11 Installation Assistant
 $windows11DownloadUrl = "https://download.microsoft.com/download/6/8/3/683178b7-baac-4b0d-95be-065a945aadee/Windows11InstallationAssistant.exe"
 # Windows 11 official ISO page
@@ -12,12 +12,12 @@ Function Write-Log {
     $logMessage = "$timestamp - $Message"
     # Write message to log file and output to console
     Add-Content -Path $logFile -Value $logMessage
-    Write-Host $logMessage
+    # Write-Host $logMessage
 }
 # Function to download Windows 11 Installation Assistant
 Function Download-Windows11Installer {
     Write-Log "Downloading Windows 11 Installation Assistant..."
-    $installerPath = "C:\TEMP\Windows11Setup.exe"
+    $installerPath = "C:\ETRO_pp\apps\Windows11Setup.exe"
     try {
         Invoke-WebRequest -Uri $windows11DownloadUrl -OutFile $installerPath
         Write-Log "Windows 11 Installation Assistant downloaded successfully at $installerPath."
@@ -33,7 +33,7 @@ Function Upgrade-Windows11 {
     Write-Log "Initiating Windows 11 upgrade..."
     if ($installerPath -ne $null) {
         Write-Log "Starting the upgrade process..."
-        Start-Process -FilePath $installerPath -ArgumentList "/auto upgrade /quiet /noreboot" -Wait
+        Start-Process -FilePath $installerPath -ArgumentList "/auto upgrade /quiet /noreboot /eula accept /norestartui /showoobe none" -NoNewWindow -Wait
         Write-Log "Windows 11 upgrade process started."
     } else {
         Write-Log "Installer path is invalid, upgrade aborted."
