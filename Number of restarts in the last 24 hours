@@ -1,0 +1,16 @@
+# Define the time range (last 24 hours)
+$startTime = (Get-Date).AddDays(-1)
+
+# Get the count of Event ID 6009 occurrences in the System log within the last 24 hours
+$eventCount = Get-WinEvent -FilterHashtable @{LogName='System'; Id=6009; StartTime=$startTime} | Measure-Object | Select-Object -ExpandProperty Count
+
+# Display the result
+Write-Host "Number of Event ID 6009 occurrences in the last 24 hours: $eventCount"
+
+# Check if count exceeds 2
+if ($eventCount -gt 2) {
+    Write-Host "Count exceeds 2, exiting script."
+    exit
+}
+
+Write-Host "Count is within limit, continuing script execution..."
