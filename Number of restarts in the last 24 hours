@@ -9,8 +9,8 @@ Write-Host "Number of Event ID 6009 occurrences in the last 24 hours: $eventCoun
 
 # Check if count exceeds 2
 if ($eventCount -gt 2) {
-    Write-Host "Count exceeds 2, exiting script."
+    Write-Host "There have been more than 2 restarts in the last 24 hours, exiting script."
     exit
 }
 
-Write-Host "Count is within limit, continuing script execution..."
+Write-Host "There have been fewer than 3 reboots in the last 24 hours so a restart will commence shortly..."
