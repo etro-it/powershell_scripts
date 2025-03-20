@@ -2,7 +2,7 @@
 $startTime = (Get-Date).AddDays(-1)
 
 # Get the count of Event ID 6009 occurrences in the System log within the last 24 hours
-$eventCount = Get-WinEvent -FilterHashtable @{LogName='System'; Id=6009; StartTime=$startTime} | Measure-Object | Select-Object -ExpandProperty Count
+$eventCount = Get-WinEvent -FilterHashtable @{LogName='System'; Id=6009; StartTime=$startTime} | Measure-Object | Select-Object -ExpandProperty Count -erroraction 'silentlycontinue'
 
 # Display the result
 Write-Host "Number of Event ID 6009 occurrences in the last 24 hours: $eventCount"
