@@ -5,12 +5,12 @@ $startTime = (Get-Date).AddDays(-1)
 $eventCount = Get-WinEvent -FilterHashtable @{LogName='System'; Id=6009; StartTime=$startTime} | Measure-Object | Select-Object -ExpandProperty Count
 
 # Display the result
-Write-Host "Number of Event ID 6009 occurrences in the last 24 hours: $eventCount"
+Write-Host "The number of start events (Event ID 6009) in the last 24 hours is: $eventCount"
 
 # Check if count exceeds 2
 if ($eventCount -gt 2) {
-    Write-Host "There have been more than 2 restarts in the last 24 hours, exiting script."
+    Write-Host "Since there have been more than 2 restarts in the last 24 hours, this script will now terminate."
     exit
 }
 
-Write-Host "There have been fewer than 3 reboots in the last 24 hours so a restart will commence shortly..."
+Write-Host "Since there have been fewer than 3 reboots in the last 24 hours, a restart will commence shortly..."
