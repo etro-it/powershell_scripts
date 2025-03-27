@@ -33,7 +33,7 @@ Function Upgrade-Windows11 {
     Write-Log "Initiating Windows 11 upgrade..."
     if ($installerPath -ne $null) {
         Write-Log "Starting the upgrade process..."
-        Start-Process -FilePath $installerPath -ArgumentList "/auto upgrade /quiet /noreboot /eula accept /norestartui /showoobe none /compat ignorewarning /copylogs C:\ETRO_pp\apps\" -NoNewWindow -Wait
+        Start-Process -FilePath $installerPath -ArgumentList "/auto upgrade /quiet /noreboot /eula accept /norestartui /showoobe none /copylogs C:\ETRO_pp\apps\" -NoNewWindow -Wait
         Write-Log "Windows 11 upgrade process started."
     } else {
         Write-Log "Installer path is invalid, upgrade aborted."
