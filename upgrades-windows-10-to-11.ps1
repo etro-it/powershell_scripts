@@ -34,7 +34,7 @@ Function Upgrade-Windows11 {
     $installerLogPath = "C:\ETRO_pp\apps\"
     if ($installerPath -ne $null) {
         Write-Log "Starting the upgrade process..."
-        Start-Process -FilePath $installerPath -ArgumentList "/skipeula /auto upgrade /NoRestartUI /copylogs $installerLogPath" -NoNewWindow -Wait
+        Start-Process -FilePath $installerPath -ArgumentList "/quietinstall /skipeula /auto upgrade /copylogs $installerLogPath" -NoNewWindow -Wait
         Write-Log "Windows 11 upgrade process started."
     } else {
         Write-Log "Installer path is invalid, upgrade aborted."
