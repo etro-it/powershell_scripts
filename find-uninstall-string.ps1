@@ -1,7 +1,7 @@
 # Use the variable below to search for a specific software title (ie Zoom)
 # reference: https://www.joseespitia.com/2015/12/29/search-for-uninstall-strings/
 
-$appname = "Zoom"
+$appname = "Slack"
 $32bit = get-itemproperty 'HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*' | Select-Object DisplayName, DisplayVersion, UninstallString, PSChildName | Where-Object { $_.DisplayName -match "^*$appname*"}
 $64bit = get-itemproperty 'HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*' | Select-Object DisplayName, DisplayVersion, UninstallString, PSChildName | Where-Object { $_.DisplayName -match "^*$appname*"}
 
