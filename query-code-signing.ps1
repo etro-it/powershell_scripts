@@ -1,8 +1,4 @@
-param(
-    [Parameter(Mandatory=$true)]
-    [string]$FilePath
-)
-
+$FilePath = "c:\users\brad.janzen_etrocons\AppData\Local\Temp\odis_download_dest\1ef6-0be3-3310-f495\setup\AdskUpdateCheck.exe"
 if (-Not (Test-Path $FilePath)) {
     Write-Error "File '$FilePath' not found."
     exit 1
