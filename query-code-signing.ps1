@@ -1,10 +1,10 @@
-$FilePath = "c:\users\brad.janzen_etrocons\AppData\Local\Temp\odis_download_dest\1ef6-0be3-3310-f495\setup\AdskUpdateCheck.exe"
-if (-Not (Test-Path $FilePath)) {
-    Write-Error "File '$FilePath' not found."
+$TargetFile = "c:\users\brad.janzen_etrocons\AppData\Local\Temp\odis_download_dest\1ef6-0be3-3310-f495\setup\AdskUpdateCheck.exe"
+if (-Not (Test-Path $TargetFile)) {
+    Write-Error "File '$TargetFile' not found."
     exit 1
 }
 
-$signature = Get-AuthenticodeSignature -FilePath $FilePath
+$signature = Get-AuthenticodeSignature -FilePath $TargetFile
 
 if ($signature.SignerCertificate -ne $null) {
     $cert = $signature.SignerCertificate
