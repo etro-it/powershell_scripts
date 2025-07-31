@@ -27,4 +27,10 @@ public static class IdleTimeHelper
 
 # Call the method and print idle time
 $idleTime = [IdleTimeHelper]::GetIdleTime()
+
+# Get currently logged-in user
+$username = [System.Environment]::UserName
+
+# Output
+Write-Output "Logged in user: $username"
 Write-Output "User idle time: $idleTime seconds"
